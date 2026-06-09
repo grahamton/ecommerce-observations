@@ -69,15 +69,25 @@ Written to `outputs/` (gitignored):
 ## Layout
 
 ```
-.claude-plugin/plugin.json        # plugin manifest + /dive registration
-commands/dive.md                  # the /dive command workflow
-skills/shopping-dive/SKILL.md     # dive methodology (loaded by the command)
-skills/shopping-dive/references/
+.claude-plugin/plugin.json        # plugin manifest (skills auto-discovered — no commands array)
+skills/dive/SKILL.md              # the /dive skill: workflow + methodology + report format
+skills/dive/references/
   funnel-stages.md                # stage definitions, classification, per-stage friction
   pattern-library.md              # named good patterns + anti-patterns
   journal-schema.md               # the per-stop observation record schema
+portable/                         # platform-neutral version for Gemini in Chrome / Copilot Cowork
 outputs/                          # generated journals + reports
 ```
+
+> Format note: `/dive` is a **skill** (`skills/dive/SKILL.md`), the recommended Claude Code format. It was
+> migrated from the legacy `commands/dive.md` in v0.3 — same `/dive` invocation, now with the supporting-files
+> directory and skill frontmatter (`disable-model-invocation`, `allowed-tools`).
+
+## New in v0.3
+
+- **Skill-format migration** — `/dive` moved from the legacy `commands/dive.md` to `skills/dive/SKILL.md`
+  (commands merged into skills in Claude Code v2.1.3+). Same `/dive` invocation; cleaner structure, richer
+  frontmatter, auto-discovered (no `commands` array).
 
 ## New in v0.2
 
@@ -88,7 +98,7 @@ outputs/                          # generated journals + reports
   GIF), plus a Slack/email-ready recap block and an Open Questions roll-up.
 - All of the above are mirrored in `portable/` for Gemini in Chrome and Copilot Cowork.
 
-## Deferred (candidates for v0.3)
+## Deferred (candidates for a later release)
 
 - Analytical depth: compare/persona dives, funnel-health score + trend memory.
 - Deep-data enrichment via `merch-connector acquire()` (hybrid deep-scrape).

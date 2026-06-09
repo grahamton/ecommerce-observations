@@ -1,14 +1,11 @@
 {
   "name": "ecommerce-observations",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Live ride-along recorder/reporter for ecommerce shopping. Observes your real browsing session across the funnel (landing → search → category → PDP → cart → checkout), capturing flow, findability, friction, and named patterns with fast quick-mark notes, then synthesizes a dive report with a visual funnel storyboard.",
   "author": {
     "name": "grahamton"
   },
   "keywords": ["ecommerce", "funnel", "ux", "shopping", "ride-along", "conversion", "findability"],
-  "commands": [
-    "./commands/dive.md"
-  ],
   "compatibility": {
     "mcpVersion": ">=2.0.0"
   }

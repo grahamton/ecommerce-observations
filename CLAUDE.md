@@ -41,7 +41,7 @@ merch-connector. Anything *longitudinal / multi-page / flow-and-friction* is her
 Entry/Landing → Findability (search+nav) → Category/Listing → PDP → Cart → Checkout → Confirmation. Real
 dives skip stages and loop back; capture what actually happens, in order. Definitions, URL/structure
 classification heuristics, and per-stage friction live in
-`skills/shopping-dive/references/funnel-stages.md`.
+`skills/dive/references/funnel-stages.md`.
 
 ## Shared vocabulary (do not diverge from merch-auditor)
 
@@ -52,7 +52,7 @@ Dive output reuses merch-auditor's tags and lens so findings read consistently a
 - **Lens:** conversion_architect (CRO, social proof, funnel friction) — see
   `C:\dev\merch-auditor\skills\storefront-auditing\references\` for the shared rubric.
 - **Named patterns:** call (anti-)patterns out by their library name —
-  `skills/shopping-dive/references/pattern-library.md`.
+  `skills/dive/references/pattern-library.md`.
 
 ## Privacy rule (non-negotiable)
 
@@ -63,15 +63,19 @@ address, or payment details. Reference screenshots by note, not by capturing for
 ## Layout
 
 ```
-.claude-plugin/plugin.json        manifest + /dive registration
-commands/dive.md                  the /dive command workflow (operational wrapper)
-skills/shopping-dive/SKILL.md     methodology (the substance — loaded by the command)
-skills/shopping-dive/references/
+.claude-plugin/plugin.json        manifest (skills auto-discovered; no commands array)
+skills/dive/SKILL.md              the /dive skill — workflow + methodology + report (the substance)
+skills/dive/references/
   funnel-stages.md                stage definitions, classification, per-stage friction
   pattern-library.md              named good patterns + anti-patterns
-  journal-schema.md               per-stop observation record format
+  journal-schema.md               per-stop observation record format + sidecar schema
+portable/                         platform-neutral version (Gemini in Chrome / Copilot Cowork)
 outputs/                          generated journals + reports (gitignored)
 ```
+
+> Format: `/dive` is a **skill** (`skills/dive/SKILL.md`) — the recommended Claude Code format. Migrated from
+> the legacy `commands/dive.md` in v0.3 (commands merged into skills; same `/dive` invocation). Plugin skills
+> auto-discover from `skills/`, so no `commands` array is needed in `plugin.json`.
 
 ## Output conventions
 
@@ -85,7 +89,7 @@ trick from its `audit.md`):
 
 ## Parity: keep portable in sync
 
-Every methodology change must land in **both** `skills/shopping-dive/` (Claude) and `portable/` (Gemini
+Every methodology change must land in **both** `skills/dive/` (Claude) and `portable/` (Gemini
 single-prompt + Cowork foldered skill). Portable degrades gracefully where a capability needs Claude-only
 tooling (auto-poll, file-based resume, GIF storyboard → manual/within-session/text).
 

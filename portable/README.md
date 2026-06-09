@@ -55,6 +55,6 @@ let it observe each page.
 
 ## Sync note
 
-This folder and the Claude plugin (`../skills/shopping-dive/`) intentionally share the same funnel model,
+This folder and the Claude plugin (`../skills/dive/`) intentionally share the same funnel model,
 pattern names, journal fields, report sections, root-cause tags, and privacy rule. When you change one,
 change the others so findings read the same everywhere.
