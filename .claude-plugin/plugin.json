@@ -1,7 +1,7 @@
 {
   "name": "ecommerce-observations",
-  "version": "0.1.0",
-  "description": "Live ride-along recorder/reporter for ecommerce shopping. Observes your real browsing session across the funnel (landing → search → category → PDP → cart → checkout), capturing flow, findability, friction, and named patterns, then synthesizes a dive report.",
+  "version": "0.2.0",
+  "description": "Live ride-along recorder/reporter for ecommerce shopping. Observes your real browsing session across the funnel (landing → search → category → PDP → cart → checkout), capturing flow, findability, friction, and named patterns with fast quick-mark notes, then synthesizes a dive report with a visual funnel storyboard.",
   "author": {
     "name": "grahamton"
   },

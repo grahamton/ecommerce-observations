@@ -40,14 +40,20 @@ the `/dive` command registers.
 ```
 /dive                       # ride along on whatever tab you're already shopping in
 /dive https://example.com   # start by opening this URL, then ride along
+/dive --auto                # hands-free; run under /loop, e.g. /loop 45s /dive --auto
+/dive --batch               # capture all open storefront tabs in one pass
 ```
 
 Then just shop. After each navigation, hand control back (type "next", "ok", or any note) and the dive
 records the new stop with a short live callout. You can also:
 
-- **Flag a moment:** `flag this` or `note: the size filter is buried`
-- **Hands-free mode (opt-in):** run it under `/loop`, e.g. `/loop 45s /dive` — re-polls your tab on an
-  interval instead of waiting for you to type. Heavier on context; turn-triggered is the default.
+- **Quick-marks (fast notes):** drop a tagged note in 1–3 chars — `! buried add-to-cart` (friction),
+  `+ guest checkout` (good), `? is shipping shown yet` (open question), `* nice imagery` (note). The dive
+  infers severity + root-cause tag for `!` marks. Freeform `flag this` / `note: …` still works too.
+- **Pause/resume:** stop any time; re-run `/dive` on the same domain and it offers to resume where you left
+  off (state persists across restarts).
+- **Hands-free mode (opt-in):** `/loop 45s /dive --auto` re-polls your tab on an interval instead of waiting
+  for you to type. Heavier on context; turn-triggered is the default.
 - **End and report:** `end dive` (or `report`) → writes the synthesized report.
 
 ## Outputs
@@ -55,7 +61,10 @@ records the new stop with a short live callout. You can also:
 Written to `outputs/` (gitignored):
 
 - `dive-<domain>-<YYYY-MM-DD-HHMM>.md` — the live journey log, one record per funnel stop.
-- `dive-report-<domain>-<YYYY-MM-DD-HHMM>.md` — the synthesized report at the end.
+- `dive-<domain>-<YYYY-MM-DD-HHMM>/stop-<n>.jpg` — per-stop screenshots that feed the report storyboard.
+- `dive-report-<domain>-<YYYY-MM-DD-HHMM>.md` — the synthesized report (shareable recap + funnel storyboard
+  + ranked friction + open questions) at the end.
+- `.dive-state-<domain>.json` — session-state sidecar enabling pause/resume.
 
 ## Layout
 
@@ -70,8 +79,16 @@ skills/shopping-dive/references/
 outputs/                          # generated journals + reports
 ```
 
-## Not in v0.1 (deferred)
+## New in v0.2
 
-- Optional `merch-connector acquire()` enrichment on a paused page (hybrid deep-scrape).
-- Polished hands-free polling.
-- Multi-dive history / comparison.
+- **Quick-marks** — 1–3 char tagged notes (`!` / `+` / `?` / `*`) with inferred severity + root-cause tag.
+- **Easier driving** — opt-in hands-free `--auto` (under `/loop`), pause/resume via a state sidecar, and
+  `--batch` multi-tab capture.
+- **Visual funnel storyboard + shareable recap** — per-stop screenshots assembled into the report (optional
+  GIF), plus a Slack/email-ready recap block and an Open Questions roll-up.
+- All of the above are mirrored in `portable/` for Gemini in Chrome and Copilot Cowork.
+
+## Deferred (candidates for v0.3)
+
+- Analytical depth: compare/persona dives, funnel-health score + trend memory.
+- Deep-data enrichment via `merch-connector acquire()` (hybrid deep-scrape).

@@ -5,6 +5,12 @@ all Claude/MCP plumbing removed. It assumes only that **the agent can see the pa
 live tab, or be shown the page content/screenshots). The funnel model, pattern library, journal schema,
 report format, root-cause tags, and privacy rule are identical to the Claude version.
 
+**v0.2 capabilities (kept in parity, degrade gracefully):** fast **quick-marks** (`!` friction, `+` good,
+`?` question, `*` note), **multi-tab batch** capture (shine on Gemini's 10-tab share), a **shareable recap**
++ **funnel storyboard** in the report, and pause/resume (file-based where possible, conversation-based in a
+single-prompt skill). Where a capability needs tooling the platform lacks (e.g. animated-GIF storyboard,
+cross-session file resume), it degrades to text/within-session instead of failing.
+
 ## Two artifacts here
 
 | Artifact | For | What it is |
@@ -36,9 +42,11 @@ A Gemini Skill is one saved prompt, so use the flattened file:
 2. In the Gemini-in-Chrome sidebar, paste and run once on a storefront to confirm behavior.
 3. From chat history, **Save as Skill** → name it `dive`, pick an emoji. (Manage at `chrome://skills/browse`.)
 4. **Run it:** while shopping, type `/dive`; when prompted, **share the tab(s)** you're on (current + up to
-   10). Re-invoke on each new page as you move through the funnel.
-5. **Output:** Gemini can't write files — the journal lives in the conversation. Say "end dive" to get the
-   full journal + report as markdown to copy and save.
+   10). Re-invoke on each new page — or **share several tabs at once** for batch capture of pages you shopped
+   ahead on.
+5. **Drop quick-marks** as you go: `! buried add-to-cart`, `+ guest checkout`, `? is shipping shown yet`.
+6. **Output:** Gemini can't write files — the journal lives in the conversation. Say "end dive" to get the
+   full journal + report (with shareable recap + text storyboard) as markdown to copy and save.
 
 ## Use in any other browser agent
 

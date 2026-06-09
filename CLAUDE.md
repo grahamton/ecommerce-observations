@@ -25,10 +25,16 @@ merch-connector. Anything *longitudinal / multi-page / flow-and-friction* is her
   start. There is no fallback engine — if the Chrome extension isn't connected, the dive can't run.
 - **Pull-based, so turn-triggered capture.** Claude-in-Chrome has no navigation push event. The capture
   loop runs each turn: read current tab → if the page changed since the last stop, record a new stop. This
-  is how "auto-detect on navigation" is achieved within the turn model. Hands-free polling under `/loop` is
-  opt-in, not the default.
+  is how "auto-detect on navigation" is achieved within the turn model. Three modes share this loop:
+  `turn` (default), `auto` (`--auto` under `/loop`), `batch` (`--batch`, all open tabs in one pass).
 - **One record per stop, append-only.** The live journal accumulates one record per funnel stop and is never
   rewritten mid-dive. The final report synthesizes from it.
+- **Quick-marks for fast notes.** A 1–3 char grammar (`!` friction, `+` good, `?` question, `*` note) maps
+  to journal fields; `!` marks get inferred severity + root-cause tag. See SKILL.md / journal-schema.md.
+- **Pause/resume via a sidecar.** `outputs/.dive-state-<domain>.json` tracks `stopCounter`/`lastSeenUrl`/etc.
+  so `/dive` can resume an in-progress dive across restarts.
+- **Per-stop screenshots → storyboard.** Each stop is captured to `outputs/dive-<domain>-<ts>/stop-<n>.jpg`
+  and assembled into a visual storyboard (+ optional `gif_creator` GIF) in the report.
 
 ## Funnel model (7 stages)
 
@@ -73,7 +79,15 @@ Written to `outputs/` (local Windows path — do **not** use merch-auditor's clo
 trick from its `audit.md`):
 
 - `dive-<domain>-<YYYY-MM-DD-HHMM>.md` — live journal, one record per stop.
+- `dive-<domain>-<YYYY-MM-DD-HHMM>/stop-<n>.jpg` — per-stop screenshots for the storyboard.
 - `dive-report-<domain>-<YYYY-MM-DD-HHMM>.md` — synthesized report at dive end.
+- `.dive-state-<domain>.json` — session-state sidecar for pause/resume (all `outputs/*` is gitignored).
+
+## Parity: keep portable in sync
+
+Every methodology change must land in **both** `skills/shopping-dive/` (Claude) and `portable/` (Gemini
+single-prompt + Cowork foldered skill). Portable degrades gracefully where a capability needs Claude-only
+tooling (auto-poll, file-based resume, GIF storyboard → manual/within-session/text).
 
 ## Working on the plugin
 
