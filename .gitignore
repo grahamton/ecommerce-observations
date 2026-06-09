@@ -1,0 +1,7 @@
+# Dive journals and reports are generated artifacts, not source.
+outputs/*
+!outputs/.gitkeep
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
