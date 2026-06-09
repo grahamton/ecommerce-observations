@@ -2,6 +2,9 @@
 outputs/*
 !outputs/.gitkeep
 
+# Local Claude Code settings (machine-specific permissions, not source)
+.claude/settings.local.json
+
 # Editor / OS noise
 .DS_Store
 Thumbs.db
