@@ -1,0 +1,13 @@
+{
+  "name": "grahamton-local",
+  "owner": {
+    "name": "grahamton"
+  },
+  "plugins": [
+    {
+      "name": "ecommerce-observations",
+      "source": "./",
+      "description": "Live ride-along recorder/reporter for ecommerce shopping (/dive, /sweep)."
+    }
+  ]
+}
