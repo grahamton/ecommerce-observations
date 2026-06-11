@@ -1,7 +1,7 @@
 ---
 name: sweep
 description: Silent ride-along recorder for ecommerce shopping. Watches the user's live Chrome tab while they shop, capturing minimal evidence per stop (screenshot, URL, network events) with no commentary, then spends all analysis in one synthesis pass at the end. The lean counterpart to /dive. Use when the user wants a passive shopping recorder or a funnel sweep.
-argument-hint: ["report" to end and synthesize]
+argument-hint: "[report — end the sweep and synthesize]"
 disable-model-invocation: true
 allowed-tools: mcp__Claude_in_Chrome__list_connected_browsers, mcp__Claude_in_Chrome__tabs_context_mcp, mcp__Claude_in_Chrome__computer, mcp__Claude_in_Chrome__read_network_requests, Write, Read, Bash
 ---
