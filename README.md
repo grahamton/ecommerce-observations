@@ -56,6 +56,16 @@ records the new stop with a short live callout. You can also:
   for you to type. Heavier on context; turn-triggered is the default.
 - **End and report:** `end dive` (or `report`) → writes the synthesized report.
 
+## Experimental: `/sweep` (lean variant)
+
+`skills/sweep/SKILL.md` is a stripped counterpart to `/dive` for passive shopping: it captures minimal
+evidence per stop (screenshot, URL, commerce network events) in a single append-only `journey.jsonl`,
+says nothing while you shop (one-line acknowledgments only), and spends all analysis in one synthesis
+pass when you say `report`. No quick-marks, no live callouts, no modes — anything you type mid-shop is
+pinned verbatim to the current stop and quoted back in the report. It reuses `/dive`'s funnel-stage and
+pattern references at report time. Deliberately not mirrored to `portable/` until it earns it; run both
+against the same site to compare.
+
 ## Outputs
 
 Written to `outputs/` (gitignored):
