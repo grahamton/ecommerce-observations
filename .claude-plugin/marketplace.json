@@ -1,0 +1,14 @@
+{
+  "name": "grahamton",
+  "description": "Ecommerce journey tooling for Claude Code: live ride-along funnel dives (/dive) and the lean /sweep variant.",
+  "owner": {
+    "name": "grahamton"
+  },
+  "plugins": [
+    {
+      "name": "ecommerce-observations",
+      "source": "./",
+      "description": "Live ride-along recorder/reporter for ecommerce shopping (/dive, /sweep)."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-observations",
+  "version": "0.9.0",
+  "description": "Live ride-along recorder/reporter for ecommerce shopping. Observes your real browsing session (or drives it yourself in --drive mode) across the funnel (landing → search → category → PDP → cart → checkout), capturing flow, findability, friction, GTM/dataLayer tracking gaps, WebMCP agent-readiness, and named patterns (B2C and B2B/B2B2C) with fast quick-mark notes and upfront/persistent site context, then synthesizes a dive report with a visual funnel storyboard.",
+  "author": {
+    "name": "grahamton"
+  },
+  "keywords": [
+    "ecommerce",
+    "funnel",
+    "ux",
+    "shopping",
+    "ride-along",
+    "conversion",
+    "findability",
+    "gtm",
+    "datalayer",
+    "b2b",
+    "webmcp",
+    "drive",
+    "site-context"
+  ],
+  "homepage": "https://github.com/grahamton/ecommerce-observations",
+  "repository": "https://github.com/grahamton/ecommerce-observations",
+  "license": "MIT"
+}

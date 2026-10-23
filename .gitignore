@@ -1,0 +1,13 @@
+# Dive journals and reports are generated artifacts, not source.
+outputs/*
+!outputs/.gitkeep
+
+# Local Claude Code settings (machine-specific permissions, not source)
+.claude/settings.local.json
+
+# Packaged plugin build artifact (rebuild from source as needed)
+*.plugin
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
